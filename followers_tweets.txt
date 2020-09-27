@@ -1,0 +1,191 @@
+[
+    {
+        "Name": "AbbVie Italia",
+        "Screen_Name": "AbbVieItalia",
+        "Follower": 1566,
+        "Following": 64,
+        "Tweet_no": 238
+    },
+    {
+        "Name": "Alfasigma",
+        "Screen_Name": "AlfasigmaSpa",
+        "Follower": 124,
+        "Following": 399,
+        "Tweet_no": 144
+    },
+    {
+        "Name": "Osservatorio Salute",
+        "Screen_Name": "osservasaluteaz",
+        "Follower": 10859,
+        "Following": 316,
+        "Tweet_no": 7092
+    },
+    {
+        "Name": "Bayer Italia",
+        "Screen_Name": "BayerItalia",
+        "Follower": 4246,
+        "Following": 2082,
+        "Tweet_no": 2751
+    },
+    {
+        "Name": "BIOVIIIx",
+        "Screen_Name": "BIOVIIIx",
+        "Follower": 1724,
+        "Following": 3681,
+        "Tweet_no": 698
+    },
+    {
+        "Name": "Coloplast Italia",
+        "Screen_Name": "Coloplastitalia",
+        "Follower": 646,
+        "Following": 1903,
+        "Tweet_no": 193
+    },
+    {
+        "Name": "Daiichi Sankyo Italia",
+        "Screen_Name": "DaiichiSankyoIT",
+        "Follower": 687,
+        "Following": 66,
+        "Tweet_no": 244
+    },
+    {
+        "Name": "DOC Generici",
+        "Screen_Name": "docgenerici",
+        "Follower": 328,
+        "Following": 177,
+        "Tweet_no": 1688
+    },
+    {
+        "Name": "Domp\u00e9",
+        "Screen_Name": "DompeFarma",
+        "Follower": 415,
+        "Following": 74,
+        "Tweet_no": 1088
+    },
+    {
+        "Name": "Lilly Italia",
+        "Screen_Name": "EliLillyItalia",
+        "Follower": 14454,
+        "Following": 1164,
+        "Tweet_no": 7086
+    },
+    {
+        "Name": "Fidia Farmaceutici",
+        "Screen_Name": "Fidiapharma",
+        "Follower": 292,
+        "Following": 113,
+        "Tweet_no": 380
+    },
+    {
+        "Name": "GSK_IT",
+        "Screen_Name": "gsk_it",
+        "Follower": 948,
+        "Following": 930,
+        "Tweet_no": 1509
+    },
+    {
+        "Name": "IBSA Italia",
+        "Screen_Name": "IBSAItalia",
+        "Follower": 574,
+        "Following": 246,
+        "Tweet_no": 660
+    },
+    {
+        "Name": "Janssen Italia",
+        "Screen_Name": "JanssenITA",
+        "Follower": 2577,
+        "Following": 280,
+        "Tweet_no": 2275
+    },
+    {
+        "Name": "LEO Pharma Italia",
+        "Screen_Name": "LEOPharmaIt",
+        "Follower": 6791,
+        "Following": 6896,
+        "Tweet_no": 962
+    },
+    {
+        "Name": "Lundbeck Italia",
+        "Screen_Name": "LundbeckItalia",
+        "Follower": 2627,
+        "Following": 192,
+        "Tweet_no": 291
+    },
+    {
+        "Name": "MSD Salute",
+        "Screen_Name": "msdsalute",
+        "Follower": 25744,
+        "Following": 3411,
+        "Tweet_no": 21232
+    },
+    {
+        "Name": "Neopharmed Gentili",
+        "Screen_Name": "neopharmed",
+        "Follower": 817,
+        "Following": 3351,
+        "Tweet_no": 1479
+    },
+    {
+        "Name": "Novartis Italia",
+        "Screen_Name": "NovartisItalia",
+        "Follower": 7599,
+        "Following": 228,
+        "Tweet_no": 1984
+    },
+    {
+        "Name": "Novo Nordisk Italia",
+        "Screen_Name": "NovoNordiskITA",
+        "Follower": 1534,
+        "Following": 873,
+        "Tweet_no": 2377
+    },
+    {
+        "Name": "Pfizer Italia",
+        "Screen_Name": "pfizeritalia",
+        "Follower": 1295,
+        "Following": 51,
+        "Tweet_no": 235
+    },
+    {
+        "Name": "Sanofi Genzyme IT",
+        "Screen_Name": "SanofiGenzymeIT",
+        "Follower": 5181,
+        "Following": 417,
+        "Tweet_no": 3023
+    },
+    {
+        "Name": "Sanofi Italia",
+        "Screen_Name": "SanofiIT",
+        "Follower": 18055,
+        "Following": 389,
+        "Tweet_no": 9551
+    },
+    {
+        "Name": "SIFI SpA",
+        "Screen_Name": "sifigroup",
+        "Follower": 798,
+        "Following": 899,
+        "Tweet_no": 2255
+    },
+    {
+        "Name": "Teva Italia",
+        "Screen_Name": "Teva_IT",
+        "Follower": 791,
+        "Following": 145,
+        "Tweet_no": 1074
+    },
+    {
+        "Name": "Zambon",
+        "Screen_Name": "ZambonPharma",
+        "Follower": 1104,
+        "Following": 156,
+        "Tweet_no": 1299
+    },
+    {
+        "Name": "Zentiva Italia",
+        "Screen_Name": "ZentivaIT",
+        "Follower": 1636,
+        "Following": 87,
+        "Tweet_no": 883
+    }
+]

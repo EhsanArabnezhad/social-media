@@ -14,7 +14,7 @@ import sys
 from googletrans import Translator
 from langdetect import detect, DetectorFactory
 import numpy as np
-
+from webdriver_manager.chrome import ChromeDriverManager
 
 def print_same_line(text):
     sys.stdout.write('\r')
@@ -28,7 +28,7 @@ class InstagramBot:
     def __init__(self, username1, password1):
         self.username = username1
         self.password = password1
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
 
     def closebrowser(self):
         self.driver.close()
@@ -37,8 +37,8 @@ class InstagramBot:
         driver = self.driver
         driver.get("https://www.instagram.com/")
         time.sleep(2)
-        login_button = driver.find_element_by_xpath("//a[@href='/accounts/login/?source=auth_switcher']")
-        login_button.click()
+        #login_button = driver.find_element_by_xpath("//a[@href='/accounts/login/?source=auth_switcher']")
+        #login_button.click()
         time.sleep(2)
         user_name_elem = driver.find_element_by_xpath("//input[@name='username']")
         user_name_elem.clear()
@@ -59,7 +59,8 @@ class InstagramBot:
             date_time_obj = datetime.strptime(time_stamp, '%Y-%m-%dT%H:%M:%S.%fZ')
 
             if date_time_obj.month >= 9:
-                post = driver.find_element_by_xpath("/html/body/span/section/main/div/div/article/div[2]/div[1]/ul/div/li/div/div/div[2]/span").get_attribute('textContent')
+                post = driver.find_element_by_xpath("/html/body/div[1]/section/main/div/div[1]/article/div[3]/div[1]/ul/div/li/div/div/div[2]/span").get_attribute('textContent')
+
                 post = re.sub(r"https?://[A-Za-z0-9./]*", " ", post)
                 post = re.sub(r"[^a-zA-Z#]", " ", post)
                 hsh = re.findall(r"#[a-zA-Z]+", post)
@@ -69,15 +70,16 @@ class InstagramBot:
                 print(post)
                 print(hsh)
 
-                influencer = driver.find_element_by_xpath("/html/body/span/section/main/div/div/article/header/div[2]/div[1]/div[1]/h2/a").get_attribute('textContent')
+                influencer = driver.find_element_by_xpath("/html/body/div[1]/section/main/div/div[1]/article/div[3]/div[1]/ul/div/li/div/div/div[2]/h2/div/span/a").get_attribute('textContent')
+
                 print(influencer)
-                if detect(post.lower()) == 'it':
-                    print('IT')
-                    '''with open('Hashtags.csv', 'a', encoding='utf-8-sig') as f1:
+                if detect(post.lower()) == 'en':
+                    print('EN')
+                    with open('Hashtags.csv', 'a', encoding='utf-8-sig') as f1:
                         writer4 = csv.writer(f1)
                         for item in hsh:
                             # post = post.strip()
-                            writer4.writerow([item.strip('#').lower()])'''
+                            writer4.writerow([item.strip('#').lower()])
 
                     with open('Influencer.csv', 'a', encoding='utf-8-sig') as f2:
                         writer3 = csv.writer(f2)
@@ -104,21 +106,22 @@ class InstagramBot:
 
         while check:
             try:
-                time.sleep(random.randint(2, 4))
-                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                time.sleep(2)
-                # scroll_from += scroll_limit
+                for i in range(3):
+                    time.sleep(random.randint(4, 6))
+                    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                    time.sleep(random.randint(3, 4))
+                    # scroll_from += scroll_limit
 
-                # get tags
-                hrefs_in_view = driver.find_elements_by_tag_name('a')
+                    # get tags
+                    hrefs_in_view = driver.find_elements_by_tag_name('a')
 
-                # finding relevant hrefs
-                hrefs_in_view = [elem.get_attribute('href') for elem in hrefs_in_view
-                                 if '.com/p/' in elem.get_attribute('href')]
-                # building list of unique photos
-                [pic_hrefs.append(href) for href in hrefs_in_view if href not in pic_hrefs]
-                # print(pic_hrefs)
-                # print("Check: pic href length " + str(len(pic_hrefs)))
+                    # finding relevant hrefs
+                    hrefs_in_view = [elem.get_attribute('href') for elem in hrefs_in_view
+                                     if '.com/p/' in elem.get_attribute('href')]
+                    # building list of unique photos
+                    [pic_hrefs.append(href) for href in hrefs_in_view if href not in pic_hrefs]
+                    # print(pic_hrefs)
+                    # print("Check: pic href length " + str(len(pic_hrefs)))
                 pic_href = pic_hrefs[-1]
                 print(pic_href)
                 # open tab
@@ -131,19 +134,19 @@ class InstagramBot:
                 time.sleep(1)  # wait until new tab finishes loading
                 # Load a page
                 driver.get(pic_href)
-                time.sleep(1)
+                time.sleep(random.randint(1, 2))
                 # Make the tests...
                 scrapy_selector = Selector(text=driver.page_source)
                 time_stamp = scrapy_selector.xpath('//time[@class="_1o9PC Nzb55"]/@datetime').extract_first()
                 date_time_obj = datetime.strptime(time_stamp, '%Y-%m-%dT%H:%M:%S.%fZ')
                 print(date_time_obj.month)
                 print(date_time_obj.day)
-                if date_time_obj.month < 9:
+                if date_time_obj.month < 7:
                     # print(date_time_obj.month)
                     check = 0
                 driver.close()  # closes new tab
                 driver.switch_to.window(curwindowhndl)
-                time.sleep(2)
+                time.sleep(random.randint(2, 3))
 
                 # close the tab
                 # (Keys.CONTROL + 'w') on other OSs.
@@ -164,13 +167,14 @@ class InstagramBot:
                 try:
                     time.sleep(random.randint(2, 4))
                     ig.find_hashtags(pic_href)
-                    # print(description)
-                    # like_button = lambda: driver.find_element_by_xpath('//span[@aria-label="Like"]')
-                    # like_button().click()
-                    # for second in reversed(range(0, random.randint(18, 28))):
-                    #    print_same_line("#" + hashtag + ': unique photos left: ' + str(unique_photos)
-                    #                    + " | Sleeping " + str(second))
-                    #    time.sleep(1)
+                    #print(description)
+                    driver.find_element_by_xpath("//section/span/button/div/span[*[local-name()='svg']/@aria-label='Like']").click()
+                    #like_button = lambda: driver.find_element_by_xpath(" //button[normalize-space(@class)='wpO6b']/*[name()='svg']")
+                    #like_button().click()
+                    for second in reversed(range(0, random.randint(22, 28))):
+                       print_same_line("#" + hashtag + ': unique photos left: ' + str(unique_photos)
+                                       + " | Sleeping " + str(second))
+                       time.sleep(random.randint(1, 2))
                 except Exception as exp:
                     print(exp)
                     time.sleep(2)
@@ -184,13 +188,13 @@ class InstagramBot:
 if __name__ == "__main__":
     translator = Translator()
 
-    with open('Influencer.csv', 'w', encoding='utf-8-sig') as f:
+    """with open('Influencer.csv', 'w', encoding='utf-8-sig') as f:
         writer2 = csv.writer(f)
         writer2.writerow(['Influencer', 'Hashtags', 'Post'])
 
-    '''with open('Hashtags.csv', 'w', encoding='utf-8-sig') as f:
+    with open('Hashtags.csv', 'w', encoding='utf-8-sig') as f:
         writer1 = csv.writer(f)
-        writer1.writerow(['Hashtag'])'''
+        writer1.writerow(['Hashtag'])"""
 
     username = constants.username2
     password = constants.password2
@@ -198,7 +202,7 @@ if __name__ == "__main__":
     ig = InstagramBot(username, password)
     ig.login()
     blacklist = set()
-    hashtags = ['sclerosimultipla']
+    hashtags = ['happy']
     # while check:
     try:
         # Choose a random tag from the list of tags
