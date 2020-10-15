@@ -21,10 +21,10 @@ class Insta_Info_Scraper:
         print(json_data['entry_data']['ProfilePage'][0]['graphql']['user']['full_name'])
 
         info = {}
-        if json_data['entry_data']['ProfilePage'][0]['graphql']['user']['full_name'] :
+        if json_data['entry_data']['ProfilePage'][0]['graphql']['user']['full_name']:
             info['Name'] = json_data['entry_data']['ProfilePage'][0]['graphql']['user']['full_name']
         else:
-            info['Name'] ="No_Name"
+            info['Name'] = "No_Name"
         info["Username"] = json_data['entry_data']['ProfilePage'][0]['graphql']['user']['username']
         info["Followers"] = json_data['entry_data']['ProfilePage'][0]['graphql']['user']['edge_followed_by']['count']
         info["Following"] = json_data['entry_data']['ProfilePage'][0]['graphql']['user']['edge_follow']['count']

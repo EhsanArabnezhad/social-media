@@ -6,8 +6,8 @@ import csv
 key = constants.youtube_API_key
 
 with open('yt.txt') as source:
-	f = source.read().splitlines()
-	all_yt_user = [element for element in f]
+    f = source.read().splitlines()
+    all_yt_user = [element for element in f]
 
 with open('youtube_followers.csv', 'w') as f:
     writer = csv.writer(f)
@@ -24,7 +24,7 @@ for username in all_yt_user:
             subs = json.loads(data)["items"][0]["statistics"]["subscriberCount"]
             with open('youtube_followers.csv', 'a') as f:
                 writer = csv.writer(f)
-                writer.writerow([username,subs])
+                writer.writerow([username, subs])
 
             print(username + " has " + "{:,d}".format(int(subs)) + " subscribers!")
         elif json.loads(data2)["items"]:
@@ -32,7 +32,7 @@ for username in all_yt_user:
             subs = json.loads(data2)["items"][0]["statistics"]["subscriberCount"]
             with open('youtube_followers.csv', 'a') as f:
                 writer = csv.writer(f)
-                writer.writerow([username,subs])
+                writer.writerow([username, subs])
             print(username + " has " + "{:,d}".format(int(subs)) + " subscribers!")
     except Exception as e:
         print(e)

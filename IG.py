@@ -16,6 +16,7 @@ from langdetect import detect, DetectorFactory
 import numpy as np
 from webdriver_manager.chrome import ChromeDriverManager
 
+
 def print_same_line(text):
     sys.stdout.write('\r')
     sys.stdout.flush()
@@ -37,8 +38,8 @@ class InstagramBot:
         driver = self.driver
         driver.get("https://www.instagram.com/")
         time.sleep(2)
-        #login_button = driver.find_element_by_xpath("//a[@href='/accounts/login/?source=auth_switcher']")
-        #login_button.click()
+        # login_button = driver.find_element_by_xpath("//a[@href='/accounts/login/?source=auth_switcher']")
+        # login_button.click()
         time.sleep(2)
         user_name_elem = driver.find_element_by_xpath("//input[@name='username']")
         user_name_elem.clear()
@@ -95,9 +96,9 @@ class InstagramBot:
     def like_photo(self, hashtag):
         driver = self.driver
         time.sleep(2)
-        print('1')
+        # print('1')
         driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
-        print('2')
+        # print('2')
         time.sleep(2)
 
         # gathering photos until a certain date
@@ -141,7 +142,7 @@ class InstagramBot:
                 date_time_obj = datetime.strptime(time_stamp, '%Y-%m-%dT%H:%M:%S.%fZ')
                 print(date_time_obj.month)
                 print(date_time_obj.day)
-                if date_time_obj.month < 7:
+                if date_time_obj.month < 8:
                     # print(date_time_obj.month)
                     check = 0
                 driver.close()  # closes new tab
@@ -167,14 +168,14 @@ class InstagramBot:
                 try:
                     time.sleep(random.randint(2, 4))
                     ig.find_hashtags(pic_href)
-                    #print(description)
+                    # print(description)
                     driver.find_element_by_xpath("//section/span/button/div/span[*[local-name()='svg']/@aria-label='Like']").click()
-                    #like_button = lambda: driver.find_element_by_xpath(" //button[normalize-space(@class)='wpO6b']/*[name()='svg']")
-                    #like_button().click()
+                    # like_button = lambda: driver.find_element_by_xpath(" //button[normalize-space(@class)='wpO6b']/*[name()='svg']")
+                    # like_button().click()
                     for second in reversed(range(0, random.randint(22, 28))):
-                       print_same_line("#" + hashtag + ': unique photos left: ' + str(unique_photos)
-                                       + " | Sleeping " + str(second))
-                       time.sleep(random.randint(1, 2))
+                        print_same_line("#" + hashtag + ': unique photos left: ' + str(unique_photos)
+                                        + " | Sleeping " + str(second))
+                        time.sleep(random.randint(1, 2))
                 except Exception as exp:
                     print(exp)
                     time.sleep(2)
@@ -202,7 +203,7 @@ if __name__ == "__main__":
     ig = InstagramBot(username, password)
     ig.login()
     blacklist = set()
-    hashtags = ['happy']
+    hashtags = ['italy']
     # while check:
     try:
         # Choose a random tag from the list of tags
